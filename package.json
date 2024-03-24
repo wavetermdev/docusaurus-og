@@ -21,7 +21,7 @@
     "@docusaurus/utils": "^2.4.1",
     "@docusaurus/utils-common": "^2.4.1",
     "@docusaurus/utils-validation": "^2.4.1",
-    "@resvg/resvg-js": "^2.6.0",
+    "@resvg/resvg-js": "^2.1.0",
     "lodash": "^4.17.21",
     "node-html-parser": "^6.1.5",
     "object-hash": "^3.0.0",
