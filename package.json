@@ -12,8 +12,7 @@
   "scripts": {
     "build": "tsc --build",
     "watch": "tsc --build --watch",
-    "prepublishOnly": "yarn build",
-    "postinstall": "tsc --outDir ./lib"
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "@docusaurus/core": "^2.4.1",

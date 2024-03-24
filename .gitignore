@@ -26,4 +26,4 @@ lerna-debug.log
 
 packages/docusaurus-playground/static/generated/*
 
-lib/
+tsconfig.tsbuildinfo
