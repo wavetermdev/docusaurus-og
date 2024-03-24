@@ -6,6 +6,7 @@ import React from 'react'
 
 import type Satori from 'satori'
 import { type SatoriOptions } from 'satori'
+import { Resvg } from '@resvg/resvg-js'
 
 
 export type ImageGeneratorOptions = SatoriOptions
@@ -55,7 +56,6 @@ export class ImageGenerator {
     )
 
     const svg = await this.satori(element, options)
-    const { Resvg } = await import('@resvg/resvg-js').then(module => module)
 
     const pngBuffer = new Resvg(svg).render().asPng()
     await fsp.writeFile(absolutePath, pngBuffer)
