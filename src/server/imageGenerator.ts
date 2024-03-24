@@ -6,7 +6,7 @@ import React from 'react'
 
 import type Satori from 'satori'
 import { type SatoriOptions } from 'satori'
-import type Sharp from 'sharp'
+
 
 export type ImageGeneratorOptions = SatoriOptions
 export type ImageGeneratorResult = {
@@ -17,7 +17,6 @@ export type ImageGeneratorResult = {
 
 export class ImageGenerator {
   private satori: typeof Satori
-  private sharp: typeof Sharp
   private cache: Record<string, ImageGeneratorResult> = {}
 
   private outDir: string = ''
@@ -34,7 +33,7 @@ export class ImageGenerator {
 
   public init = async () => {
     this.satori = await import('satori').then((mod) => mod.default)
-    this.sharp = await import('sharp').then((mod) => mod.default)
+
 
     if (!fs.existsSync(this.outDir))
       await fsp.mkdir(this.outDir, { recursive: true })
@@ -56,7 +55,10 @@ export class ImageGenerator {
     )
 
     const svg = await this.satori(element, options)
-    await this.sharp(Buffer.from(svg)).png().toFile(absolutePath)
+    const { Resvg } = await import('@resvg/resvg-js').then(module => module)
+
+    const pngBuffer = new Resvg(svg).render().asPng()
+    await fsp.writeFile(absolutePath, pngBuffer)
 
     const url = new URL(this.args.websiteUrl)
     url.pathname = relativePath
