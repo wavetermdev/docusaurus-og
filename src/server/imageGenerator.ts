@@ -54,8 +54,9 @@ export class ImageGenerator {
     )
 
     const svg = await this.satori(element, options)
-    const pngBuffer = new Resvg(svg).render().asPng();
-    fs.writeFileSync(absolutePath, pngBuffer);
+    const resvg = new Resvg(svg);
+    const pngOutput = resvg.render();
+    await fsp.writeFile(absolutePath, pngOutput.asPng());
 
     const url = new URL(this.args.websiteUrl)
     url.pathname = relativePath
