@@ -10,6 +10,8 @@ import { ImageGenerator } from './imageGenerator'
 import { BlogPageData } from './types/blog.types'
 import { ImageRenderer } from './types/image.types'
 import { PluginOptions } from './types/plugin.types'
+import logger from '@docusaurus/logger'
+import * as progress from './progress';
 
 export class BlogPlugin {
   static plugin = 'docusaurus-plugin-content-blog'
@@ -105,11 +107,18 @@ export class BlogPlugin {
   }
 
   generate = async () => {
+    logger.info(`Generating og images for ${this.pages.length} blog pages`)
+    const bar = progress.defaultBar()
+    bar.start(this.pages.length, 0, {prefix: 'rendering images', suffix: '-'})
     for (const page of this.pages) {
       const document = new Document(this.getHtmlPath(page.permalink))
+      bar.update({ suffix: page.permalink })
 
       await document.load()
-      if (!document.loaded) continue
+      if (!document.loaded) {
+        bar.increment()
+        continue
+      }
 
       const image = await this.imageRenderer(
         {
@@ -122,6 +131,7 @@ export class BlogPlugin {
 
       if (!image) {
         await document.write()
+        bar.increment()
         continue
       }
 
@@ -130,7 +140,11 @@ export class BlogPlugin {
       await document.setImage(generated.url)
 
       await document.write()
+      bar.increment()
     }
+    bar.stop()
+    
+    logger.success('Generated og images for blog pages')
   }
 
   getHtmlPath = (permalink: string, baseUrl?: string) =>

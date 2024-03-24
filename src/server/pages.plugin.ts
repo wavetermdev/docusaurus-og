@@ -9,6 +9,8 @@ import { Document } from './document'
 import { ImageGenerator } from './imageGenerator'
 import { ImageRenderer } from './types/image.types'
 import { PluginOptions } from './types/plugin.types'
+import logger from '@docusaurus/logger'
+import * as progress from './progress';
 
 export class PagesPlugin {
   static plugin = 'docusaurus-plugin-content-pages'
@@ -67,10 +69,18 @@ export class PagesPlugin {
   }
 
   generate = async () => {
+    logger.info(`Generating og images for ${this.pages.length} pages`)
+    const bar = progress.defaultBar()
+    bar.start(this.pages.length, 0, {prefix: 'rendering images', suffix: '-'})
     for (const page of this.pages) {
       const document = new Document(this.getHtmlPath(page.metadata.permalink))
+      bar.update({ suffix: page.metadata.permalink })
+
       await document.load()
-      if (!document.loaded) continue
+      if (!document.loaded) {
+        bar.increment()
+        continue
+      }
 
       const image = await this.imageRenderer(
         {
@@ -83,6 +93,7 @@ export class PagesPlugin {
 
       if (!image) {
         await document.write()
+        bar.increment()
         continue
       }
 
@@ -91,7 +102,10 @@ export class PagesPlugin {
       await document.setImage(generated.url)
 
       await document.write()
+      bar.increment()
     }
+    bar.stop()
+    logger.success('Generated og images for pages')
   }
 
   getHtmlPath = (permalink: string) =>
