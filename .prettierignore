@@ -1,9 +1,0 @@
-dist
-node_modules
-.yarn
-build
-coverage
-.docusaurus
-__fixtures__
-
-packages/logos-*/lib/*

@@ -1,3 +1,0 @@
-# Docusaurus Local Search
-
-TODO.

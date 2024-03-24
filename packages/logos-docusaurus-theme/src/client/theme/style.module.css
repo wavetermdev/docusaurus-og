@@ -1,9 +1,0 @@
-.root {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  max-width: var(--container-max-width);
-}
-
-@media (max-width: 997px) {
-}
