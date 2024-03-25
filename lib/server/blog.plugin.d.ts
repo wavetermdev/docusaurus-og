@@ -16,4 +16,5 @@ export declare class BlogPlugin {
     loadInstance: (plugin: LoadedPlugin) => Promise<void>;
     generate: () => Promise<void>;
     getHtmlPath: (permalink: string, baseUrl?: string) => string;
+    stripLangFromPath: (path: string) => string;
 }

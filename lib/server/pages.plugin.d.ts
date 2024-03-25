@@ -16,4 +16,5 @@ export declare class PagesPlugin {
     loadInstance: (plugin: LoadedPlugin) => Promise<void>;
     generate: () => Promise<void>;
     getHtmlPath: (permalink: string) => string;
+    stripLangFromPath: (path: string) => string;
 }

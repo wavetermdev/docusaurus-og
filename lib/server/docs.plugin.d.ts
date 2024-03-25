@@ -19,4 +19,5 @@ export declare class DocsPlugin {
     loadVersion: (options: DocsPluginOptions, version: LoadedVersion) => Promise<void>;
     generate: () => Promise<void>;
     getHtmlPath: (doc: Partial<DocsPageData>) => string | undefined;
+    stripLangFromPath: (path: string) => string;
 }

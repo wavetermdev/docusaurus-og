@@ -148,5 +148,9 @@ export class BlogPlugin {
   }
 
   getHtmlPath = (permalink: string, baseUrl?: string) =>
-    path.join(this.context.outDir, permalink, 'index.html')
+    path.join(this.stripLangFromPath(this.context.outDir), permalink, 'index.html')
+  stripLangFromPath = (path: string) => {
+    const lang = this.context.i18n.locales.find((locale) => path.endsWith(`/${locale}`))
+    return lang ? path.slice(0, -lang.length - 1) : path
+  }
 }
