@@ -40,5 +40,6 @@
     "@types/cli-progress": "^3.11.5",
     "@types/lodash": "^4.14.186",
     "typescript": "^5.4.3"
-  }
+  },
+  "packageManager": "yarn@4.4.1"
 }
