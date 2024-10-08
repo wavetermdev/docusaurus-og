@@ -1,3 +1,4 @@
+/// <reference types="@docusaurus/plugin-content-blog/src/plugin-content-blog.js" />
 import { BlogPaginated, BlogPost, BlogTag, PluginOptions } from '@docusaurus/plugin-content-blog';
 import { Document } from '../document';
 export type BlogPageType = 'post' | 'list' | 'archive' | 'tags' | 'tag' | 'archive';

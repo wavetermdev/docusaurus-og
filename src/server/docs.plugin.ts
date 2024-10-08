@@ -100,7 +100,7 @@ export class DocsPlugin {
 
   getHtmlPath = (doc: Partial<DocsPageData>) =>
     doc.metadata?.permalink &&
-    path.join(this.stripLangFromPath(this.context.outDir), doc.metadata.permalink, 'index.html')
+    path.join(this.stripLangFromPath(this.context.outDir), `${doc.metadata.permalink}.html`)
   stripLangFromPath = (path: string) => {
     const lang = this.context.i18n.locales.find((locale) => path.endsWith(`/${locale}`))
     return lang ? path.slice(0, -lang.length - 1) : path
