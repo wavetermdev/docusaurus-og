@@ -68,7 +68,6 @@ export class DocsPlugin {
     const bar = progress.defaultBar()
     bar.start(this.docs.length, 0, {prefix: 'rendering images', suffix: '-'})
     for (const doc of this.docs) {
-      console.log("doc", doc)
       if (doc.metadata.permalink === "/") {
         doc.metadata.permalink = "/index"
       }
