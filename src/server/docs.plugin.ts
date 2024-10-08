@@ -69,7 +69,7 @@ export class DocsPlugin {
     bar.start(this.docs.length, 0, {prefix: 'rendering images', suffix: '-'})
     for (const doc of this.docs) {
       console.log("doc", doc)
-      if (!doc?.metadata.permalink) {
+      if (!doc.metadata.permalink || !doc.metadata.permalink.length) {
         continue;
       }
       const document = new Document(this.getHtmlPath(doc)!)
