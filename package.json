@@ -1,5 +1,5 @@
 {
-  "name": "@kas-tle/docusaurus-og",
+  "name": "@waveterm/docusaurus-og",
   "version": "1.0.0-alpha.132",
   "description": "Docusaurus OpenGraph image plugin",
   "main": "lib/index.js",
