@@ -68,9 +68,6 @@ export class DocsPlugin {
     const bar = progress.defaultBar()
     bar.start(this.docs.length, 0, {prefix: 'rendering images', suffix: '-'})
     for (const doc of this.docs) {
-      if (doc.metadata.permalink === "/") {
-        doc.metadata.permalink = "/index"
-      }
       const document = new Document(this.getHtmlPath(doc)!)
       bar.update({ suffix: doc.metadata.permalink })
 
@@ -103,7 +100,7 @@ export class DocsPlugin {
 
   getHtmlPath = (doc: Partial<DocsPageData>) =>
     doc.metadata?.permalink &&
-    path.join(this.stripLangFromPath(this.context.outDir), `${doc.metadata.permalink}.html`)
+    path.join(this.stripLangFromPath(this.context.outDir), `${doc.metadata.permalink}${doc.metadata.permalink.endsWith("/") ? "index" : ""}.html`)
   stripLangFromPath = (path: string) => {
     const lang = this.context.i18n.locales.find((locale) => path.endsWith(`/${locale}`))
     return lang ? path.slice(0, -lang.length - 1) : path
