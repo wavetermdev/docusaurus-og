@@ -5,8 +5,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/acid-info/logos-docusaurus-plugins.git",
-    "directory": "packages/docusaurus-og"
+    "url": "https://github.com/wavetermdev/docusaurus-og.git",
   },
   "license": "MIT",
   "scripts": {
