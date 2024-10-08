@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wavetermdev/docusaurus-og.git",
+    "url": "https://github.com/wavetermdev/docusaurus-og.git"
   },
   "license": "MIT",
   "scripts": {
