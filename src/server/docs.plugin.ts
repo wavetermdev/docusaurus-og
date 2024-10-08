@@ -68,6 +68,7 @@ export class DocsPlugin {
     const bar = progress.defaultBar()
     bar.start(this.docs.length, 0, {prefix: 'rendering images', suffix: '-'})
     for (const doc of this.docs) {
+      console.log("doc", doc)
       const document = new Document(this.getHtmlPath(doc)!)
       bar.update({ suffix: doc.metadata.permalink })
 
