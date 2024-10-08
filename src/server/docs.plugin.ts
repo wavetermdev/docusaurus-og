@@ -69,8 +69,8 @@ export class DocsPlugin {
     bar.start(this.docs.length, 0, {prefix: 'rendering images', suffix: '-'})
     for (const doc of this.docs) {
       console.log("doc", doc)
-      if (!doc.metadata.permalink || !doc.metadata.permalink.length) {
-        continue;
+      if (doc.metadata.permalink === "/") {
+        doc.metadata.permalink = "/index"
       }
       const document = new Document(this.getHtmlPath(doc)!)
       bar.update({ suffix: doc.metadata.permalink })
