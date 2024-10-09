@@ -27,7 +27,7 @@
     "lodash": "^4.17.21",
     "node-html-parser": "^6.1.5",
     "object-hash": "^3.0.0",
-    "satori": "^0.10.13"
+    "satori": "^0.1"
   },
   "engines": {
     "node": ">=16.14"
