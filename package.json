@@ -42,7 +42,7 @@
     "@docusaurus/plugin-content-docs": "^3.7.0",
     "@docusaurus/plugin-content-pages": "^3.7.0",
     "@types/cli-progress": "^3.11.6",
-    "@types/lodash": "^4.17.14",
+    "@types/lodash": "^4.17.15",
     "typescript": "^5.7.3"
   },
   "packageManager": "yarn@4.4.1"
