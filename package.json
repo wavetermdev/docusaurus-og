@@ -27,7 +27,7 @@
     "lodash": "^4.17.21",
     "node-html-parser": "^6.1.13",
     "object-hash": "^3.0.0",
-    "satori": "^0.1.2"
+    "satori": "^0.12.1"
   },
   "resolutions": {
     "ws@^8.13.0": "8.17.1",
